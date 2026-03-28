@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─────────────────────────────────────────────────── */
+:root {
+  --green:       #0F3D3E;
+  --green-mid:   #155F61;
+  --green-light: #E6F4F1;
+  --green-tint:  rgba(15,61,62,0.08);
+  --bg:          #FFFFFF;
+  --bg-alt:      #F8FAFC;
+  --text:        #111827;
+  --text-2:      #6B7280;
+  --border:      #E5E7EB;
+  --glass-bg:    rgba(255,255,255,0.65);
+  --glass-border:rgba(255,255,255,0.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F8FAFC; }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+/* ─── Gradient text (green) ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #0F3D3E 0%, #1a6668 50%, #0F3D3E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glassmorphism card ─────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(15,61,62,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.glass:hover {
+  box-shadow: 0 12px 40px rgba(15,61,62,0.12), 0 2px 8px rgba(0,0,0,0.05);
+  border-color: rgba(15,61,62,0.20);
+  transform: translateY(-3px);
+}
+
+/* Solid white card fallback */
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(15,61,62,0.22);
+  box-shadow: 0 10px 36px rgba(15,61,62,0.09);
+  transform: translateY(-3px);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────── */
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--green);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+.btn-green:hover {
+  background: var(--green-mid);
+  box-shadow: 0 8px 28px rgba(15,61,62,0.28);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: transparent;
+  color: var(--green);
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border-radius: 12px;
+  border: 2px solid var(--green);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: var(--green-tint);
+  transform: translateY(-2px);
+}
+
+/* Legacy alias so old pages still compile */
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
+  background: var(--green); color: #fff; font-weight: 600; font-family: 'DM Sans',sans-serif;
+  border-radius: 12px; border: none; cursor: pointer;
+  transition: background 0.25s, box-shadow 0.25s, transform 0.2s; text-decoration: none; }
+.btn-gold:hover { background: var(--green-mid); box-shadow: 0 8px 28px rgba(15,61,62,0.28); transform: translateY(-2px); }
+
+/* ─── Section helpers ────────────────────────────────────────────────── */
+.section-pad { padding: 88px 0; }
+.section-alt  { background: var(--bg-alt); }
+
+/* ─── Hero dot grid ──────────────────────────────────────────────────── */
+.dot-grid {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(circle, rgba(15,61,62,0.10) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ─── Progress bar shimmer ───────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%)  skewX(-15deg); }
+}
+.shimmer { animation: shimmer 2.2s ease-in-out infinite; }
+
+/* ─── Float ──────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.float { animation: float 5s ease-in-out infinite; }
+
+/* ─── Green pulse for avatar ─────────────────────────────────────────── */
+@keyframes greenPulse {
+  0%,100% { box-shadow: 0 0 20px rgba(15,61,62,0.18); }
+  50%      { box-shadow: 0 0 48px rgba(15,61,62,0.40); }
+}
+.green-pulse { animation: greenPulse 3s ease-in-out infinite; }
+/* legacy alias */
+.gold-pulse  { animation: greenPulse 3s ease-in-out infinite; }
+
+/* ─── Page entrance ──────────────────────────────────────────────────── */
+.page-enter { animation: pageEnter 0.45s ease forwards; }
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ─── Chat scrollbar ─────────────────────────────────────────────────── */
+.chat-scroll::-webkit-scrollbar       { width: 3px; }
+.chat-scroll::-webkit-scrollbar-track { background: transparent; }
+.chat-scroll::-webkit-scrollbar-thumb { background: rgba(15,61,62,0.25); border-radius: 2px; }
+
+/* ─── Ambient blobs ─────────────────────────────────────────────────── */
+.blob-green { background: radial-gradient(circle, rgba(15,61,62,0.07) 0%, transparent 70%); }
+.blob-teal  { background: radial-gradient(circle, rgba(21,95,97,0.05) 0%, transparent 70%); }
+
+/* ─── Glass navbar surface ───────────────────────────────────────────── */
+.nav-glass {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15,61,62,0.10);
+  box-shadow: 0 2px 20px rgba(15,61,62,0.06);
+}
+
+/* ─── Timeline ───────────────────────────────────────────────────────── */
+.timeline-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid #E6F4F1;
+  box-shadow: 0 0 0 3px rgba(15,61,62,0.15);
+  flex-shrink: 0;
+}
+.timeline-line {
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(15,61,62,0.40), rgba(15,61,62,0.08), transparent);
+}
+
+/* ─── Green badge ────────────────────────────────────────────────────── */
+.badge-green {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600;
+  background: var(--green-light); color: var(--green);
+  border: 1px solid rgba(15,61,62,0.18);
+}
+.badge-pursuing {
+  background: #DCFCE7; color: #166534;
+  border: 1px solid #BBF7D0;
+}
+
+/* ─── Profile image ──────────────────────────────────────────────────── */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+  display: block;
+}
+.profile-img-wrap:hover .profile-img {
+  transform: scale(1.05);
+}
+
+/* Rotating gradient ring */
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin-ring {
+  animation: spinRing 14s linear infinite;
+}
+
+/* Green glow pulse */
+@keyframes greenGlow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(15,61,62,0), 0 8px 32px rgba(15,61,62,0.16); }
+  50%      { box-shadow: 0 0 0 6px rgba(15,61,62,0.08), 0 16px 48px rgba(15,61,62,0.22); }
+}
+.img-glow { animation: greenGlow 3s ease-in-out infinite; }
