@@ -1,4 +1,4 @@
-# 🚀 Aryan Sharma | Data Analyst Portfolio
+# 🚀 Suhaib Ashraf | Data Analyst Portfolio
 
 A premium, fully responsive portfolio website built with **React + Vite + Tailwind CSS**.
 
@@ -22,7 +22,7 @@ A premium, fully responsive portfolio website built with **React + Vite + Tailwi
 portfolio/
 ├── public/
 │   ├── favicon.svg
-│   └── aryan-sharma-cv.pdf
+│   └── suhaib-ashraf-cv.pdf
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
